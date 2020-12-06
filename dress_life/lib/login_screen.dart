@@ -1,4 +1,4 @@
-import 'package:dress_life/registration_screen.dart';
+import 'package:dress_life/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,8 +7,9 @@ import 'package:dress_life/utils/constants.dart';
 class LoginScreen extends StatelessWidget {
   static const id = '/';
   final _auth = FirebaseAuth.instance;
+  UserCredential registeredUser;
+  UserCredential loggedInUser;
 
-  @override
   Widget build(BuildContext context) {
 
     return FlutterLogin(
@@ -42,9 +43,22 @@ class LoginScreen extends StatelessWidget {
         return _createUser(loginData);
       },
       onSubmitAnimationCompleted: (){
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => RegistrationScreen(),
-        ));
+        if(registeredUser != null){
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ));
+        }else
+        {
+          print('asdasdasd');
+        }
+        if(loggedInUser != null){
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ));
+        }else
+        {
+          print('asdasdasd');
+        }
       },
       onRecoverPassword: (name) {
         return _recoverPassword(name);
@@ -53,31 +67,29 @@ class LoginScreen extends StatelessWidget {
   }
 
   Future<String> _signInUser(LoginData data) async {
-      try{
-        await _auth.signInWithEmailAndPassword(
-            email: data.name,
-            password: data.password);
-        return null;
-      }catch(e){
-        print(e);
-        throw e;
-      }
+    try{
+      loggedInUser = await _auth.signInWithEmailAndPassword(
+          email: data.name,
+          password: data.password);
+      return null;
+    }catch(e){
+      return Constants.ERROR_0003_USER_OR_PASS_WRONG;
+    }
   }
 
   Future<String> _createUser(LoginData data) async {
     try{
-      final registeredUser = await _auth.createUserWithEmailAndPassword(
+      registeredUser = await _auth.createUserWithEmailAndPassword(
           email: data.name,
           password: data.password);
-      print('User registered : {$registeredUser}');
-      return registeredUser.user.displayName;
+      return null;
     }catch(e){
       print(e);
+      return Constants.ERROR_0003_USER_OR_PASS_WRONG;;
     }
-    return null;
   }
 
   Future<String> _recoverPassword(String name) {
-      return null;
+    return null;
   }
 }

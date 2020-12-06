@@ -1,4 +1,4 @@
-import 'package:dress_life/registration_screen.dart';
+import 'package:dress_life/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
                 initialRoute: LoginScreen.id,
                 routes:{
                   LoginScreen.id : (context) => LoginScreen(),
-                  RegistrationScreen.id : (context) => RegistrationScreen(),
+                  HomeScreen.id : (context) => HomeScreen(),
                 }
             );
           } else{
