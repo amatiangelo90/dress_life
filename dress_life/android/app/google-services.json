@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "902805282461",
+    "firebase_url": "https://dress-life-97579.firebaseio.com",
+    "project_id": "dress-life-97579",
+    "storage_bucket": "dress-life-97579.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902805282461:android:3547ffd7b21fede142be74",
+        "android_client_info": {
+          "package_name": "com.dress_life"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902805282461-7kvftmlrojq7s9uubffcu7pgtv9te9dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP0Buuk7E63KcnezfX57yr60MtjM0PBdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902805282461-7kvftmlrojq7s9uubffcu7pgtv9te9dg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
